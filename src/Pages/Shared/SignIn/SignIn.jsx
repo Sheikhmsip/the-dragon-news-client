@@ -2,9 +2,12 @@ import React, { useContext } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const SighIn = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, logInWithGoogle } = useContext(AuthContext);
+
+  
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -88,7 +91,11 @@ const SighIn = () => {
             <button className="btn btn-primary">Login</button>
           </div>
         </form>
-        <Link to="/register">
+        <div onClick={logInWithGoogle} className="text-center flex items-center justify-center gap-5 border mx-auto w-52 my-2">
+        <span className="my-2"><FaGoogle className="w-8 h-8 text-yellow-500" /></span>
+        <button className="font-bold my-2" > Login with Google</button>
+      </div>
+        <Link to="/login">
           <p>
             Already Have An Account ?{" "}
             <span className="text-red-700 font-semibold">Login</span>

@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { login, logInWithGoogle} = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -12,7 +13,7 @@ const Login = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(email, password);
-    signIn(email, password)
+    login(email, password)
       .then((result) => {
         console.log(result.user);
       })
@@ -62,6 +63,10 @@ const Login = () => {
             <button className="btn btn-primary">Login</button>
           </div>
         </form>
+        <div onClick={logInWithGoogle} className="text-center flex items-center justify-center gap-5 border mx-auto w-52 my-2">
+        <span className="my-2"><FaGoogle className="w-8 h-8 text-yellow-500" /></span>
+        <button className="font-bold my-2" > Login with Google</button>
+      </div>
         <Link to="/register">
           <p>
             Dont’t Have An Account ?{" "}
@@ -69,6 +74,7 @@ const Login = () => {
           </p>
         </Link>
       </div>
+     
     </div>
   );
 };

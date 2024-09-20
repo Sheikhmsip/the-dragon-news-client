@@ -3,15 +3,18 @@ import { NavLink } from "react-router-dom";
 import userPic from "../../../assets/user.png";
 import { AuthContext } from "../../../Provider/AuthProvider";
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  const handleLogout = () => [logOut()];
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout()
+  };
   const navLinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/about">About</NavLink>
         <NavLink to="/career">Career</NavLink>
-        <NavLink to="/login">Login</NavLink>
+        {/* <NavLink to="/login">Login</NavLink> */}
+        <NavLink to="/addNews">Add News</NavLink>
       </li>
     </>
   );

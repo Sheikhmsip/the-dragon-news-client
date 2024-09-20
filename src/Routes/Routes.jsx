@@ -7,6 +7,8 @@ import SignIn from "../Pages/Shared/SignIn/SignIn";
 import News from "../Pages/News/News";
 import About from "../Pages/Shared/About/About";
 import Career from "../Pages/Shared/Career/Career";
+import AddNews from "../Pages/News/AddNews";
+import EditNews from "../Pages/News/EditNews";
 
 const router = createBrowserRouter([
   {
@@ -16,12 +18,21 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=>fetch('/news.json')
+        loader: ()=>fetch('http://localhost:5000/news')
       },
       {
         path: '/news/:id',
-        loader: ()=>fetch('/news.json'),
-        element:<News></News>
+        element:<News></News>,
+        loader: ()=>fetch('http://localhost:5000/news')
+      },
+      {
+        path:"/addNews",
+        element:<AddNews></AddNews>
+      },
+      {
+        path:"/editNews/:id",
+        element:<EditNews></EditNews>,
+        loader: ({params})=>fetch(`http://localhost:5000/news/${params.id}`)
       },
       {
         path: "/login",
