@@ -9,6 +9,7 @@ import About from "../Pages/Shared/About/About";
 import Career from "../Pages/Shared/Career/Career";
 import AddNews from "../Pages/News/AddNews";
 import EditNews from "../Pages/News/EditNews";
+import MyNews from "../Pages/MyNews/MyNews";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,11 @@ const router = createBrowserRouter([
       {
         path:"/addNews",
         element:<AddNews></AddNews>
+      },
+      {
+        path:"/myNews",
+        element:<MyNews></MyNews>,
+        loader: ()=>fetch('http://localhost:5000/news')
       },
       {
         path:"/editNews/:id",
