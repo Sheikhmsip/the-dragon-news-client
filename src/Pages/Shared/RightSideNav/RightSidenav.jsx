@@ -24,13 +24,13 @@ const {logInWithGoogle} = useContext(AuthContext)
           <span>Login with Google</span>
         </Link>
       </div>
-      <div className="btn btn-outline w-full  mt-2">
+      {/* <div className="btn btn-outline w-full  mt-2">
         <Link className="flex gap-2 items-center  ">
           <FaGithub />
 
           <span>Login with Github</span>
         </Link>
-      </div>
+      </div> */}
 
       {/* Social */}
 

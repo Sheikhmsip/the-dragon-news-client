@@ -1,12 +1,42 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import Swal from 'sweetalert2';
 
 const MyNewsCard = ({ news }) => {
   const { user } = useContext(AuthContext);
   
   const { title, details, image_url, _id } = news;
 
+  const deleteNews = (id) => {
+    Swal.fire({
+      title: "Are you sure You want to Delete?",
+      text: "If you want you can cancel",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/news/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount > 0) {
+              Swal.fire(
+                "Your News Deleted",
+                "This News has been Deleted Successful"
+              );
+            //   const remaining = news.filter((news) => news._id !== id);
+            //   setNews(remaining);
+            }
+          });
+      }
+    });
+  };
   return (
     <div className="card bg-base-100 border mb-6 shadow-lg transition transform hover:scale-105 h-full">
       {/* Image container */}
