@@ -8,35 +8,49 @@ import { useLoaderData } from "react-router-dom";
 import NewsCard from "../../Shared/NewsCard/NewsCard";
 
 const Home = () => {
-  const news = useLoaderData()
+  const news = useLoaderData();
   
-  console.log(news) 
+  console.log(news);
 
   return (
     <div className="font-poppins">
+      {/* Header */}
       <Header />
-      {/* breaking news */}
+
+      {/* Breaking News */}
       <div className="bg-slate-100">
         <BreakingNews />
       </div>
+
+      {/* Navbar */}
       <Navbar />
-      <h2 className="text-3xl font-poppins font-bold">This is Home</h2>
-      
-      <div className="grid lg:grid-cols-4 gap-6">
-        <div className="border">
-          <LeftSideNav />
-        </div>
-        <div className="grid md:col-span-2">
-          <h2 className="text-4xl">News Coming Soon</h2>
-          {
-            news.map(aNews => <NewsCard
-            key={aNews.id}
-            news={aNews}
-            ></NewsCard> )
-      }
-        </div>
-        <div className="">
-          <RightSidenav />
+
+      {/* Main Content */}
+      <div className="px-4 my-4">
+        <h2 className="text-3xl font-poppins font-bold text-center mb-6">This is Home</h2>
+
+        <div className="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-6">
+          {/* Left Side Navigation (Hidden on mobile, visible on larger screens) */}
+          <div className="lg:block md:hidden sm:hidden border p-2">
+            <LeftSideNav />
+          </div>
+
+          {/* News Section (Spans full width on mobile) */}
+          <div className="lg:col-span-2 md:col-span-2 sm:col-span-1">
+            {
+              news.map(aNews => (
+                <NewsCard
+                  key={aNews.id}
+                  news={aNews}
+                />
+              ))
+            }
+          </div>
+
+          {/* Right Side Navigation (Hidden on mobile, visible on larger screens) */}
+          <div className="lg:block md:hidden sm:hidden border p-2">
+            <RightSidenav />
+          </div>
         </div>
       </div>
     </div>
