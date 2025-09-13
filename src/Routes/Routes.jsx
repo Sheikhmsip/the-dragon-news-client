@@ -10,6 +10,7 @@ import Career from "../Pages/Shared/Career/Career";
 import AddNews from "../Pages/News/AddNews";
 import EditNews from "../Pages/News/EditNews";
 import MyNews from "../Pages/MyNews/MyNews";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/addNews",
-        element:<AddNews></AddNews>
+        element: <PrivateRoute><AddNews></AddNews></PrivateRoute> 
       },
       {
         path:"/myNews",
