@@ -19,12 +19,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: ()=>fetch('http://localhost:5000/news')
+        loader: ()=>fetch('https://the-news-dragon-server-sheikhmsip.vercel.app/news')
       },
       {
         path: '/news/:id',
         element:<News></News>,
-        loader: ()=>fetch('http://localhost:5000/news')
+        loader: ()=>fetch('https://the-news-dragon-server-sheikhmsip.vercel.app/news')
       },
       {
         path:"/addNews",
@@ -33,12 +33,12 @@ const router = createBrowserRouter([
       {
         path:"/myNews",
         element:<MyNews></MyNews>,
-        loader: ()=>fetch('http://localhost:5000/news')
+        loader: ()=>fetch('https://the-news-dragon-server-sheikhmsip.vercel.app/news')
       },
       {
         path:"/editNews/:id",
         element:<EditNews></EditNews>,
-        loader: ({params})=>fetch(`http://localhost:5000/news/${params.id}`)
+        loader: ({params})=>fetch(`https://the-news-dragon-server-sheikhmsip.vercel.app/${params.id}`)
       },
       {
         path: "/login",
